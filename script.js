@@ -18,6 +18,16 @@ const galleryImages = {
   hero: "assets/portfolio-hero.png"
 };
 
+const tempCaptions = [
+  "Temporary caption for this image.",
+  "Short note about the moment, edit, or layout.",
+  "Example text shown under the image.",
+  "A place for context, date, or project detail.",
+  "Caption preview for the enlarged view.",
+  "Small description for the portfolio grid.",
+  "Replace this with your final text later."
+];
+
 const escapeHtml = (value) => String(value || "")
   .replaceAll("&", "&amp;")
   .replaceAll("<", "&lt;")
@@ -28,7 +38,7 @@ const buildGallery = (sources) => {
   const layout = ["is-wide", "is-tall", "is-square", "is-landscape", "is-tall", "is-square", "is-wide"];
   return sources.map((item, index) => ({
     src: typeof item === "string" ? item : item.src,
-    caption: typeof item === "string" ? "" : item.caption,
+    caption: typeof item === "string" ? tempCaptions[index % tempCaptions.length] : item.caption,
     layout: layout[index % layout.length]
   }));
 };
