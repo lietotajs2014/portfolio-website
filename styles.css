@@ -51,7 +51,6 @@ a {
 }
 
 .brand,
-.site-nav,
 .language-toggle,
 .hero-actions,
 .contact-links,
@@ -71,13 +70,6 @@ a {
   height: 18px;
   border: 5px solid var(--espresso);
   background: var(--caramel);
-}
-
-.site-nav {
-  gap: clamp(12px, 3vw, 34px);
-  color: var(--coffee);
-  font-size: 0.94rem;
-  font-weight: 600;
 }
 
 .language-toggle {
@@ -130,7 +122,6 @@ a {
     linear-gradient(0deg, #7b221c 0 40%, #f3e6d5 40% 60%, #7b221c 60% 100%);
 }
 
-.site-nav a,
 .site-footer a,
 .contact-links a,
 .intro-link,
@@ -138,7 +129,6 @@ a {
   text-decoration: none;
 }
 
-.site-nav a:hover,
 .site-footer a:hover,
 .contact-links a:hover {
   color: var(--ochre);
@@ -494,9 +484,19 @@ h1 {
   display: none;
 }
 
+.about-actions {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: auto;
+}
+
 .about-toggle {
   width: max-content;
-  margin: auto 0 0 auto;
+  flex: 0 0 auto;
+  margin: 0 0 0 auto;
   border-color: rgba(216, 178, 138, 0.28);
   background: rgba(61, 36, 16, 0.28);
 }
@@ -609,12 +609,6 @@ h1 {
     position: static;
     align-items: flex-start;
     flex-direction: column;
-  }
-
-  .site-nav {
-    width: 100%;
-    overflow-x: auto;
-    padding-bottom: 4px;
   }
 
   .hero {
