@@ -5,46 +5,143 @@ const aboutTexts = document.querySelectorAll("[data-about-lang]");
 const detailTitle = document.querySelector("[data-project-title]");
 const detailGrid = document.querySelector("[data-project-grid]");
 
+const galleryImages = {
+  sports: "assets/temp-sports.svg",
+  events: "assets/temp-events.svg",
+  street: "assets/temp-street.svg",
+  art: "assets/temp-art.svg",
+  layout: "assets/temp-layout.svg",
+  hero: "assets/portfolio-hero.png"
+};
+
+const buildGallery = (sources) => {
+  const layout = ["is-wide", "is-tall", "is-square", "is-landscape", "is-tall", "is-square", "is-wide"];
+  return sources.map((src, index) => ({
+    src,
+    layout: layout[index % layout.length]
+  }));
+};
+
 const projectImages = {
   sports: {
     title: "Sports",
-    images: ["assets/temp-sports.svg", "assets/portfolio-hero.png", "assets/temp-events.svg"]
+    images: buildGallery([
+      galleryImages.sports,
+      galleryImages.hero,
+      galleryImages.events,
+      galleryImages.street,
+      galleryImages.art,
+      galleryImages.layout,
+      galleryImages.sports
+    ])
   },
   events: {
     title: "Events",
-    images: ["assets/temp-events.svg", "assets/portfolio-hero.png", "assets/temp-art.svg"]
+    images: buildGallery([
+      galleryImages.events,
+      galleryImages.hero,
+      galleryImages.art,
+      galleryImages.layout,
+      galleryImages.street,
+      galleryImages.events,
+      galleryImages.sports
+    ])
   },
   street: {
     title: "Street",
-    images: ["assets/temp-street.svg", "assets/portfolio-hero.png", "assets/temp-sports.svg"]
+    images: buildGallery([
+      galleryImages.street,
+      galleryImages.hero,
+      galleryImages.sports,
+      galleryImages.art,
+      galleryImages.layout,
+      galleryImages.events,
+      galleryImages.street
+    ])
   },
   art: {
     title: "Art",
-    images: ["assets/temp-art.svg", "assets/portfolio-hero.png", "assets/temp-layout.svg"]
+    images: buildGallery([
+      galleryImages.art,
+      galleryImages.hero,
+      galleryImages.layout,
+      galleryImages.street,
+      galleryImages.events,
+      galleryImages.sports,
+      galleryImages.art
+    ])
   },
   "photo-manipulation": {
     title: "Photo Manipulation",
-    images: ["assets/temp-art.svg", "assets/temp-street.svg", "assets/portfolio-hero.png"]
+    images: buildGallery([
+      galleryImages.art,
+      galleryImages.street,
+      galleryImages.hero,
+      galleryImages.events,
+      galleryImages.layout,
+      galleryImages.sports,
+      galleryImages.art
+    ])
   },
   "poster-concepts": {
     title: "Poster Concepts",
-    images: ["assets/temp-layout.svg", "assets/temp-events.svg", "assets/temp-art.svg"]
+    images: buildGallery([
+      galleryImages.layout,
+      galleryImages.events,
+      galleryImages.art,
+      galleryImages.hero,
+      galleryImages.street,
+      galleryImages.layout,
+      galleryImages.sports
+    ])
   },
   retouching: {
     title: "Retouching",
-    images: ["assets/portfolio-hero.png", "assets/temp-sports.svg", "assets/temp-street.svg"]
+    images: buildGallery([
+      galleryImages.hero,
+      galleryImages.sports,
+      galleryImages.street,
+      galleryImages.art,
+      galleryImages.events,
+      galleryImages.layout,
+      galleryImages.hero
+    ])
   },
   "magazine-spreads": {
     title: "Magazine Spreads",
-    images: ["assets/temp-layout.svg", "assets/temp-art.svg", "assets/temp-street.svg"]
+    images: buildGallery([
+      galleryImages.layout,
+      galleryImages.art,
+      galleryImages.street,
+      galleryImages.hero,
+      galleryImages.events,
+      galleryImages.layout,
+      galleryImages.sports
+    ])
   },
   "posters-flyers": {
     title: "Posters & Flyers",
-    images: ["assets/temp-events.svg", "assets/temp-layout.svg", "assets/portfolio-hero.png"]
+    images: buildGallery([
+      galleryImages.events,
+      galleryImages.layout,
+      galleryImages.hero,
+      galleryImages.art,
+      galleryImages.street,
+      galleryImages.sports,
+      galleryImages.layout
+    ])
   },
   booklets: {
     title: "Booklets",
-    images: ["assets/temp-layout.svg", "assets/temp-sports.svg", "assets/temp-art.svg"]
+    images: buildGallery([
+      galleryImages.layout,
+      galleryImages.sports,
+      galleryImages.art,
+      galleryImages.street,
+      galleryImages.hero,
+      galleryImages.events,
+      galleryImages.layout
+    ])
   }
 };
 
@@ -92,6 +189,10 @@ if (detailTitle && detailGrid) {
   detailTitle.textContent = project.title;
 
   detailGrid.innerHTML = project.images
-    .map((image) => `<img src="${image}" alt="${project.title} temporary image">`)
+    .map((image) => `
+      <figure class="detail-item ${image.layout}">
+        <img src="${image.src}" alt="${project.title} temporary image" loading="lazy">
+      </figure>
+    `)
     .join("");
 }
