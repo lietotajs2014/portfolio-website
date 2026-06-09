@@ -4,6 +4,10 @@ const languageButtons = document.querySelectorAll(".language-button");
 const aboutTexts = document.querySelectorAll("[data-about-lang]");
 const detailTitle = document.querySelector("[data-project-title]");
 const detailGrid = document.querySelector("[data-project-grid]");
+const lightbox = document.querySelector("[data-lightbox]");
+const lightboxImage = document.querySelector("[data-lightbox-image]");
+const lightboxCaption = document.querySelector("[data-lightbox-caption]");
+const lightboxClose = document.querySelector("[data-lightbox-close]");
 
 const galleryImages = {
   sports: "assets/temp-sports.svg",
@@ -14,10 +18,17 @@ const galleryImages = {
   hero: "assets/portfolio-hero.png"
 };
 
+const escapeHtml = (value) => String(value || "")
+  .replaceAll("&", "&amp;")
+  .replaceAll("<", "&lt;")
+  .replaceAll(">", "&gt;")
+  .replaceAll('"', "&quot;");
+
 const buildGallery = (sources) => {
   const layout = ["is-wide", "is-tall", "is-square", "is-landscape", "is-tall", "is-square", "is-wide"];
-  return sources.map((src, index) => ({
-    src,
+  return sources.map((item, index) => ({
+    src: typeof item === "string" ? item : item.src,
+    caption: typeof item === "string" ? "" : item.caption,
     layout: layout[index % layout.length]
   }));
 };
@@ -133,6 +144,36 @@ const projectImages = {
   }
 };
 
+const importedItems = window.PORTFOLIO_ITEMS || {};
+
+Object.entries(importedItems).forEach(([projectKey, items]) => {
+  if (!Array.isArray(items) || items.length === 0) {
+    return;
+  }
+
+  if (projectImages[projectKey]) {
+    projectImages[projectKey].images = buildGallery(items);
+  }
+});
+
+const updateCardPreview = (projectKey, selector) => {
+  const items = importedItems[projectKey];
+  const track = document.querySelector(`${selector} .slideshow-track`);
+
+  if (!track || !Array.isArray(items) || items.length === 0) {
+    return;
+  }
+
+  const previewImages = items.slice(0, 3);
+  while (previewImages.length < 3) {
+    previewImages.push(previewImages[previewImages.length - 1]);
+  }
+
+  track.innerHTML = previewImages
+    .map((item) => `<img src="${item.src}" alt="">`)
+    .join("");
+};
+
 const setAboutLanguage = (language) => {
   aboutTexts.forEach((item) => {
     item.classList.toggle("is-hidden", item.dataset.aboutLang !== language);
@@ -169,6 +210,16 @@ if (languageButtons.length > 0) {
   setAboutLanguage(localStorage.getItem("portfolio-about-language") || "en");
 }
 
+updateCardPreview("sports", '[href="work.html?project=sports"]');
+updateCardPreview("events", '[href="work.html?project=events"]');
+updateCardPreview("street", '[href="work.html?project=street"]');
+updateCardPreview("art", '[href="work.html?project=art"]');
+updateCardPreview("photo-manipulation", '[href="work.html?project=photo-manipulation"]');
+updateCardPreview("poster-concepts", '[href="work.html?project=poster-concepts"]');
+updateCardPreview("retouching", '[href="work.html?project=retouching"]');
+updateCardPreview("gimnazijas-laiki", '[href="work.html?project=gimnazijas-laiki"]');
+updateCardPreview("dzejas-krajums", '[href="work.html?project=dzejas-krajums"]');
+
 if (detailTitle && detailGrid) {
   const params = new URLSearchParams(window.location.search);
   const project = projectImages[params.get("project")] || projectImages.sports;
@@ -179,8 +230,32 @@ if (detailTitle && detailGrid) {
   detailGrid.innerHTML = project.images
     .map((image) => `
       <figure class="detail-item ${image.layout}">
-        <img src="${image.src}" alt="${project.title} temporary image" loading="lazy">
+        <button class="detail-image-button" type="button" data-image-src="${escapeHtml(image.src)}" data-image-caption="${escapeHtml(image.caption)}">
+          <img src="${escapeHtml(image.src)}" alt="${escapeHtml(project.title)} image" loading="lazy">
+        </button>
+        ${image.caption ? `<figcaption>${escapeHtml(image.caption)}</figcaption>` : ""}
       </figure>
     `)
     .join("");
 }
+
+document.querySelectorAll("[data-image-src]").forEach((button) => {
+  button.addEventListener("click", () => {
+    if (!lightbox || !lightboxImage || !lightboxCaption) {
+      return;
+    }
+
+    lightboxImage.src = button.dataset.imageSrc;
+    lightboxImage.alt = button.dataset.imageCaption || "Portfolio image";
+    lightboxCaption.textContent = button.dataset.imageCaption || "";
+    lightbox.showModal();
+  });
+});
+
+lightboxClose?.addEventListener("click", () => lightbox.close());
+
+lightbox?.addEventListener("click", (event) => {
+  if (event.target === lightbox) {
+    lightbox.close();
+  }
+});
