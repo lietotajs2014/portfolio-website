@@ -107,8 +107,8 @@ const projectImages = {
       galleryImages.hero
     ])
   },
-  "magazine-spreads": {
-    title: "Magazine Spreads",
+  "gimnazijas-laiki": {
+    title: "Ğimnāzijas Laiki",
     images: buildGallery([
       galleryImages.layout,
       galleryImages.art,
@@ -119,20 +119,8 @@ const projectImages = {
       galleryImages.sports
     ])
   },
-  "posters-flyers": {
-    title: "Posters & Flyers",
-    images: buildGallery([
-      galleryImages.events,
-      galleryImages.layout,
-      galleryImages.hero,
-      galleryImages.art,
-      galleryImages.street,
-      galleryImages.sports,
-      galleryImages.layout
-    ])
-  },
-  booklets: {
-    title: "Booklets",
+  "dzejas-krajums": {
+    title: "Dzejas krājums",
     images: buildGallery([
       galleryImages.layout,
       galleryImages.sports,
