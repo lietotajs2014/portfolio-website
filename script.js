@@ -1,7 +1,5 @@
 const filterButtons = document.querySelectorAll(".filter-button");
 const workCards = document.querySelectorAll(".work-card[data-category]");
-const languageButtons = document.querySelectorAll(".language-button");
-const aboutTexts = document.querySelectorAll("[data-about-lang]");
 const detailTitle = document.querySelector("[data-project-title]");
 const detailGrid = document.querySelector("[data-project-grid]");
 const lightbox = document.querySelector("[data-lightbox]");
@@ -184,20 +182,6 @@ const updateCardPreview = (projectKey, selector) => {
     .join("");
 };
 
-const setAboutLanguage = (language) => {
-  aboutTexts.forEach((item) => {
-    item.classList.toggle("is-hidden", item.dataset.aboutLang !== language);
-  });
-
-  languageButtons.forEach((button) => {
-    const isActive = button.dataset.lang === language;
-    button.classList.toggle("active", isActive);
-    button.setAttribute("aria-pressed", String(isActive));
-  });
-
-  localStorage.setItem("portfolio-about-language", language);
-};
-
 filterButtons.forEach((button) => {
   button.addEventListener("click", () => {
     const selectedCategory = button.dataset.filter;
@@ -211,14 +195,6 @@ filterButtons.forEach((button) => {
     });
   });
 });
-
-languageButtons.forEach((button) => {
-  button.addEventListener("click", () => setAboutLanguage(button.dataset.lang));
-});
-
-if (languageButtons.length > 0) {
-  setAboutLanguage(localStorage.getItem("portfolio-about-language") || "en");
-}
 
 updateCardPreview("sports", '[href="work.html?project=sports"]');
 updateCardPreview("events", '[href="work.html?project=events"]');
