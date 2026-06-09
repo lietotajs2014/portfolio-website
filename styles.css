@@ -52,6 +52,7 @@ a {
 
 .brand,
 .site-nav,
+.language-toggle,
 .hero-actions,
 .contact-links,
 .site-footer {
@@ -77,6 +78,56 @@ a {
   color: var(--coffee);
   font-size: 0.94rem;
   font-weight: 600;
+}
+
+.language-toggle {
+  gap: 4px;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(216, 178, 138, 0.18);
+}
+
+.language-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 34px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 999px;
+  color: var(--coffee);
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.language-button.active {
+  color: var(--paper);
+  background: var(--coffee);
+}
+
+.flag {
+  width: 18px;
+  height: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(61, 36, 16, 0.32);
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+.flag-en {
+  background:
+    linear-gradient(90deg, transparent 42%, #f3e6d5 42% 58%, transparent 58%),
+    linear-gradient(0deg, transparent 34%, #f3e6d5 34% 66%, transparent 66%),
+    #5c3a1e;
+}
+
+.flag-lv {
+  background:
+    linear-gradient(0deg, #7b221c 0 40%, #f3e6d5 40% 60%, #7b221c 60% 100%);
 }
 
 .site-nav a,
@@ -470,6 +521,10 @@ h1 {
     width: 100%;
     overflow-x: auto;
     padding-bottom: 4px;
+  }
+
+  .language-toggle {
+    align-self: flex-start;
   }
 
   .hero {
