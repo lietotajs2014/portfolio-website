@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Temporary events image">
+  <rect width="1200" height="800" fill="#5c3a1e"/>
+  <path d="M160 0 L360 800 M500 0 L620 800 M860 0 L720 800 M1060 0 L880 800" stroke="#d8b28a" stroke-width="34" opacity=".55"/>
+  <circle cx="260" cy="560" r="70" fill="#3d2410"/>
+  <circle cx="450" cy="590" r="86" fill="#3d2410"/>
+  <circle cx="680" cy="570" r="74" fill="#3d2410"/>
+  <circle cx="920" cy="600" r="92" fill="#3d2410"/>
+</svg>

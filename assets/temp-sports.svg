@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Temporary sports image">
+  <rect width="1200" height="800" fill="#3d2410"/>
+  <circle cx="935" cy="220" r="84" fill="#b07a45"/>
+  <path d="M165 615 C330 360 535 355 735 140" fill="none" stroke="#d8b28a" stroke-width="42" stroke-linecap="round"/>
+  <path d="M205 640 C425 500 650 480 1040 610" fill="none" stroke="#8b5a2b" stroke-width="26" stroke-linecap="round"/>
+  <rect x="0" y="690" width="1200" height="110" fill="#5c3a1e"/>
+</svg>

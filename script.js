@@ -1,72 +1,56 @@
 const filterButtons = document.querySelectorAll(".filter-button");
-const workCards = document.querySelectorAll(".work-card");
+const workCards = document.querySelectorAll(".work-card[data-category]");
 const languageButtons = document.querySelectorAll(".language-button");
-const translatableItems = document.querySelectorAll("[data-i18n]");
+const aboutTexts = document.querySelectorAll("[data-about-lang]");
+const detailTitle = document.querySelector("[data-project-title]");
+const detailGrid = document.querySelector("[data-project-grid]");
 
-const translations = {
-  en: {
-    navPhotography: "Photography",
-    navAbout: "About",
-    heroEyebrow: "Photography / design",
-    heroTitle: "Portfolio",
-    viewWork: "View work",
-    contact: "Contact",
-    photography: "Photography",
-    categories: "Categories",
-    all: "All",
-    sports: "Sports",
-    events: "Events",
-    street: "Street",
-    art: "Art",
-    projects: "Projects",
-    photoManipulation: "Photo Manipulation",
-    posterConcepts: "Poster Concepts",
-    retouching: "Retouching",
-    editorial: "Editorial",
-    magazineSpreads: "Magazine Spreads",
-    print: "Print",
-    postersFlyers: "Posters & Flyers",
-    publication: "Publication",
-    booklets: "Booklets",
-    aboutTitle: "Photography / Photoshop / InDesign",
-    backTop: "Back to top"
+const projectImages = {
+  sports: {
+    title: "Sports",
+    images: ["assets/temp-sports.svg", "assets/portfolio-hero.png", "assets/temp-events.svg"]
   },
-  lv: {
-    navPhotography: "Fotogrāfija",
-    navAbout: "Par mani",
-    heroEyebrow: "Fotogrāfija / dizains",
-    heroTitle: "Portfolio",
-    viewWork: "Darbi",
-    contact: "Kontakti",
-    photography: "Fotogrāfija",
-    categories: "Kategorijas",
-    all: "Visi",
-    sports: "Sports",
-    events: "Pasākumi",
-    street: "Iela",
-    art: "Māksla",
-    projects: "Projekti",
-    photoManipulation: "Foto manipulācijas",
-    posterConcepts: "Plakāti",
-    retouching: "Retuša",
-    editorial: "Redakcija",
-    magazineSpreads: "Žurnālu atvērumi",
-    print: "Druka",
-    postersFlyers: "Plakāti un skrejlapas",
-    publication: "Publikācija",
-    booklets: "Bukleti",
-    aboutTitle: "Fotogrāfija / Photoshop / InDesign",
-    backTop: "Uz augšu"
+  events: {
+    title: "Events",
+    images: ["assets/temp-events.svg", "assets/portfolio-hero.png", "assets/temp-art.svg"]
+  },
+  street: {
+    title: "Street",
+    images: ["assets/temp-street.svg", "assets/portfolio-hero.png", "assets/temp-sports.svg"]
+  },
+  art: {
+    title: "Art",
+    images: ["assets/temp-art.svg", "assets/portfolio-hero.png", "assets/temp-layout.svg"]
+  },
+  "photo-manipulation": {
+    title: "Photo Manipulation",
+    images: ["assets/temp-art.svg", "assets/temp-street.svg", "assets/portfolio-hero.png"]
+  },
+  "poster-concepts": {
+    title: "Poster Concepts",
+    images: ["assets/temp-layout.svg", "assets/temp-events.svg", "assets/temp-art.svg"]
+  },
+  retouching: {
+    title: "Retouching",
+    images: ["assets/portfolio-hero.png", "assets/temp-sports.svg", "assets/temp-street.svg"]
+  },
+  "magazine-spreads": {
+    title: "Magazine Spreads",
+    images: ["assets/temp-layout.svg", "assets/temp-art.svg", "assets/temp-street.svg"]
+  },
+  "posters-flyers": {
+    title: "Posters & Flyers",
+    images: ["assets/temp-events.svg", "assets/temp-layout.svg", "assets/portfolio-hero.png"]
+  },
+  booklets: {
+    title: "Booklets",
+    images: ["assets/temp-layout.svg", "assets/temp-sports.svg", "assets/temp-art.svg"]
   }
 };
 
-const setLanguage = (language) => {
-  const dictionary = translations[language] || translations.en;
-
-  document.documentElement.lang = language;
-
-  translatableItems.forEach((item) => {
-    item.textContent = dictionary[item.dataset.i18n];
+const setAboutLanguage = (language) => {
+  aboutTexts.forEach((item) => {
+    item.classList.toggle("is-hidden", item.dataset.aboutLang !== language);
   });
 
   languageButtons.forEach((button) => {
@@ -75,7 +59,7 @@ const setLanguage = (language) => {
     button.setAttribute("aria-pressed", String(isActive));
   });
 
-  localStorage.setItem("portfolio-language", language);
+  localStorage.setItem("portfolio-about-language", language);
 };
 
 filterButtons.forEach((button) => {
@@ -93,7 +77,21 @@ filterButtons.forEach((button) => {
 });
 
 languageButtons.forEach((button) => {
-  button.addEventListener("click", () => setLanguage(button.dataset.lang));
+  button.addEventListener("click", () => setAboutLanguage(button.dataset.lang));
 });
 
-setLanguage(localStorage.getItem("portfolio-language") || "en");
+if (languageButtons.length > 0) {
+  setAboutLanguage(localStorage.getItem("portfolio-about-language") || "en");
+}
+
+if (detailTitle && detailGrid) {
+  const params = new URLSearchParams(window.location.search);
+  const project = projectImages[params.get("project")] || projectImages.sports;
+
+  document.title = `${project.title} | Lietotajs2014`;
+  detailTitle.textContent = project.title;
+
+  detailGrid.innerHTML = project.images
+    .map((image) => `<img src="${image}" alt="${project.title} temporary image">`)
+    .join("");
+}

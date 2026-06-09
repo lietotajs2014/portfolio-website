@@ -17,22 +17,11 @@
     </a>
 
     <nav class="site-nav" aria-label="Primary navigation">
-      <a href="#photography" data-i18n="navPhotography">Photography</a>
+      <a href="#photography">Photography</a>
       <a href="#photoshop">Photoshop</a>
       <a href="#indesign">InDesign</a>
-      <a href="#about" data-i18n="navAbout">About</a>
+      <a href="#about">About</a>
     </nav>
-
-    <div class="language-toggle" aria-label="Language selector">
-      <button class="language-button active" type="button" data-lang="en" aria-pressed="true">
-        <span class="flag flag-en" aria-hidden="true"></span>
-        <span>EN</span>
-      </button>
-      <button class="language-button" type="button" data-lang="lv" aria-pressed="false">
-        <span class="flag flag-lv" aria-hidden="true"></span>
-        <span>LV</span>
-      </button>
-    </div>
   </header>
 
   <main>
@@ -42,120 +31,210 @@
       </div>
 
       <div class="hero-copy">
-        <p class="eyebrow" data-i18n="heroEyebrow">Photography / design</p>
-        <h1 id="hero-title" data-i18n="heroTitle">Portfolio</h1>
+        <p class="eyebrow">Photography / design</p>
+        <h1 id="hero-title">Portfolio</h1>
         <div class="hero-actions">
-          <a class="button primary" href="#photography" data-i18n="viewWork">View work</a>
-          <a class="button secondary" href="#about" data-i18n="contact">Contact</a>
+          <a class="button primary" href="#photography">View work</a>
+          <a class="button secondary" href="#about">Contact</a>
         </div>
       </div>
     </section>
 
     <section class="section intro-grid" aria-label="Portfolio summary">
-      <article>
+      <a class="intro-link" href="#photography">
         <span>01</span>
-        <h2 data-i18n="photography">Photography</h2>
-      </article>
-      <article>
+        <h2>Photography</h2>
+      </a>
+      <a class="intro-link" href="#photoshop">
         <span>02</span>
         <h2>Photoshop</h2>
-      </article>
-      <article>
+      </a>
+      <a class="intro-link" href="#indesign">
         <span>03</span>
         <h2>InDesign</h2>
-      </article>
+      </a>
     </section>
 
     <section class="section" id="photography" aria-labelledby="photography-title">
       <div class="section-heading">
-        <p class="eyebrow" data-i18n="categories">Categories</p>
-        <h2 id="photography-title" data-i18n="photography">Photography</h2>
+        <p class="eyebrow">Categories</p>
+        <h2 id="photography-title">Photography</h2>
       </div>
 
       <div class="filters" aria-label="Photography categories">
-        <button class="filter-button active" type="button" data-filter="all" data-i18n="all">All</button>
-        <button class="filter-button" type="button" data-filter="sports" data-i18n="sports">Sports</button>
-        <button class="filter-button" type="button" data-filter="events" data-i18n="events">Events</button>
-        <button class="filter-button" type="button" data-filter="street" data-i18n="street">Street</button>
-        <button class="filter-button" type="button" data-filter="art" data-i18n="art">Art</button>
+        <button class="filter-button active" type="button" data-filter="all">All</button>
+        <button class="filter-button" type="button" data-filter="sports">Sports</button>
+        <button class="filter-button" type="button" data-filter="events">Events</button>
+        <button class="filter-button" type="button" data-filter="street">Street</button>
+        <button class="filter-button" type="button" data-filter="art">Art</button>
       </div>
 
       <div class="gallery-grid">
-        <article class="work-card" data-category="sports">
-          <div class="work-image sports"></div>
-          <div class="work-info">
-            <h3 data-i18n="sports">Sports</h3>
+        <a class="work-card" href="work.html?project=sports" data-category="sports">
+          <div class="work-image slideshow">
+            <div class="slideshow-track">
+              <img src="assets/temp-sports.svg" alt="">
+              <img src="assets/portfolio-hero.png" alt="">
+              <img src="assets/temp-events.svg" alt="">
+            </div>
           </div>
-        </article>
-        <article class="work-card" data-category="events">
-          <div class="work-image events"></div>
           <div class="work-info">
-            <h3 data-i18n="events">Events</h3>
+            <h3>Sports</h3>
           </div>
-        </article>
-        <article class="work-card" data-category="street">
-          <div class="work-image street"></div>
+        </a>
+        <a class="work-card" href="work.html?project=events" data-category="events">
+          <div class="work-image slideshow">
+            <div class="slideshow-track">
+              <img src="assets/temp-events.svg" alt="">
+              <img src="assets/portfolio-hero.png" alt="">
+              <img src="assets/temp-art.svg" alt="">
+            </div>
+          </div>
           <div class="work-info">
-            <h3 data-i18n="street">Street</h3>
+            <h3>Events</h3>
           </div>
-        </article>
-        <article class="work-card" data-category="art">
-          <div class="work-image art"></div>
+        </a>
+        <a class="work-card" href="work.html?project=street" data-category="street">
+          <div class="work-image slideshow">
+            <div class="slideshow-track">
+              <img src="assets/temp-street.svg" alt="">
+              <img src="assets/portfolio-hero.png" alt="">
+              <img src="assets/temp-sports.svg" alt="">
+            </div>
+          </div>
           <div class="work-info">
-            <h3 data-i18n="art">Art</h3>
+            <h3>Street</h3>
           </div>
-        </article>
+        </a>
+        <a class="work-card" href="work.html?project=art" data-category="art">
+          <div class="work-image slideshow">
+            <div class="slideshow-track">
+              <img src="assets/temp-art.svg" alt="">
+              <img src="assets/portfolio-hero.png" alt="">
+              <img src="assets/temp-layout.svg" alt="">
+            </div>
+          </div>
+          <div class="work-info">
+            <h3>Art</h3>
+          </div>
+        </a>
       </div>
     </section>
 
     <section class="section split-section" id="photoshop" aria-labelledby="photoshop-title">
       <div class="section-heading">
-        <p class="eyebrow" data-i18n="projects">Projects</p>
+        <p class="eyebrow">Projects</p>
         <h2 id="photoshop-title">Photoshop</h2>
       </div>
-      <div class="project-list">
-        <article>
-          <h3 data-i18n="photoManipulation">Photo Manipulation</h3>
-        </article>
-        <article>
-          <h3 data-i18n="posterConcepts">Poster Concepts</h3>
-        </article>
-        <article>
-          <h3 data-i18n="retouching">Retouching</h3>
-        </article>
+      <div class="project-list card-list">
+        <a class="work-card" href="work.html?project=photo-manipulation">
+          <div class="work-image slideshow">
+            <div class="slideshow-track">
+              <img src="assets/temp-art.svg" alt="">
+              <img src="assets/temp-street.svg" alt="">
+              <img src="assets/portfolio-hero.png" alt="">
+            </div>
+          </div>
+          <div class="work-info">
+            <h3>Photo Manipulation</h3>
+          </div>
+        </a>
+        <a class="work-card" href="work.html?project=poster-concepts">
+          <div class="work-image slideshow">
+            <div class="slideshow-track">
+              <img src="assets/temp-layout.svg" alt="">
+              <img src="assets/temp-events.svg" alt="">
+              <img src="assets/temp-art.svg" alt="">
+            </div>
+          </div>
+          <div class="work-info">
+            <h3>Poster Concepts</h3>
+          </div>
+        </a>
+        <a class="work-card" href="work.html?project=retouching">
+          <div class="work-image slideshow">
+            <div class="slideshow-track">
+              <img src="assets/portfolio-hero.png" alt="">
+              <img src="assets/temp-sports.svg" alt="">
+              <img src="assets/temp-street.svg" alt="">
+            </div>
+          </div>
+          <div class="work-info">
+            <h3>Retouching</h3>
+          </div>
+        </a>
       </div>
     </section>
 
     <section class="section split-section indesign" id="indesign" aria-labelledby="indesign-title">
       <div class="section-heading">
-        <p class="eyebrow" data-i18n="projects">Projects</p>
+        <p class="eyebrow">Projects</p>
         <h2 id="indesign-title">InDesign</h2>
       </div>
-      <div class="layout-showcase">
-        <article>
-          <span data-i18n="editorial">Editorial</span>
-          <h3 data-i18n="magazineSpreads">Magazine Spreads</h3>
-        </article>
-        <article>
-          <span data-i18n="print">Print</span>
-          <h3 data-i18n="postersFlyers">Posters & Flyers</h3>
-        </article>
-        <article>
-          <span data-i18n="publication">Publication</span>
-          <h3 data-i18n="booklets">Booklets</h3>
-        </article>
+      <div class="layout-showcase card-list">
+        <a class="work-card" href="work.html?project=magazine-spreads">
+          <div class="work-image slideshow">
+            <div class="slideshow-track">
+              <img src="assets/temp-layout.svg" alt="">
+              <img src="assets/temp-art.svg" alt="">
+              <img src="assets/temp-street.svg" alt="">
+            </div>
+          </div>
+          <div class="work-info">
+            <span>Editorial</span>
+            <h3>Magazine Spreads</h3>
+          </div>
+        </a>
+        <a class="work-card" href="work.html?project=posters-flyers">
+          <div class="work-image slideshow">
+            <div class="slideshow-track">
+              <img src="assets/temp-events.svg" alt="">
+              <img src="assets/temp-layout.svg" alt="">
+              <img src="assets/portfolio-hero.png" alt="">
+            </div>
+          </div>
+          <div class="work-info">
+            <span>Print</span>
+            <h3>Posters & Flyers</h3>
+          </div>
+        </a>
+        <a class="work-card" href="work.html?project=booklets">
+          <div class="work-image slideshow">
+            <div class="slideshow-track">
+              <img src="assets/temp-layout.svg" alt="">
+              <img src="assets/temp-sports.svg" alt="">
+              <img src="assets/temp-art.svg" alt="">
+            </div>
+          </div>
+          <div class="work-info">
+            <span>Publication</span>
+            <h3>Booklets</h3>
+          </div>
+        </a>
       </div>
     </section>
 
     <section class="about section" id="about" aria-labelledby="about-title">
       <div>
-        <p class="eyebrow" data-i18n="navAbout">About</p>
-        <h2 id="about-title" data-i18n="aboutTitle">Photography / Photoshop / InDesign</h2>
+        <p class="eyebrow">About</p>
+        <h2 id="about-title">Photography / Photoshop / InDesign</h2>
       </div>
       <div class="about-copy">
+        <p data-about-lang="en">This portfolio gathers work from different years: photography, Photoshop edits, and InDesign projects.</p>
+        <p class="is-hidden" data-about-lang="lv">Šajā portfolio apkopoti dažādu gadu darbi: fotogrāfija, Photoshop apstrāde un InDesign projekti.</p>
         <div class="contact-links" aria-label="Contact links">
           <a href="https://www.instagram.com/lietotajs2014/" target="_blank" rel="noreferrer">Instagram @lietotajs2014</a>
           <a href="mailto:lietotajs2014@gmail.com">lietotajs2014@gmail.com</a>
+        </div>
+        <div class="language-toggle about-toggle" aria-label="About language selector">
+          <button class="language-button active" type="button" data-lang="en" aria-pressed="true">
+            <span class="flag flag-en" aria-hidden="true"></span>
+            <span>EN</span>
+          </button>
+          <button class="language-button" type="button" data-lang="lv" aria-pressed="false">
+            <span class="flag flag-lv" aria-hidden="true"></span>
+            <span>LV</span>
+          </button>
         </div>
       </div>
     </section>
@@ -163,7 +242,7 @@
 
   <footer class="site-footer">
     <p>&copy; 2026 lietotajs2014.</p>
-    <a href="#top" data-i18n="backTop">Back to top</a>
+    <a href="#top">Back to top</a>
   </footer>
 
   <script src="script.js"></script>

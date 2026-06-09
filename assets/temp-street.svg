@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Temporary street image">
+  <rect width="1200" height="800" fill="#8b5a2b"/>
+  <path d="M430 0 H585 V800 H430 Z M705 0 H860 V800 H705 Z" fill="#3d2410"/>
+  <path d="M0 800 L560 230 L1200 800 Z" fill="#5c3a1e"/>
+  <path d="M600 250 L1030 800 H680 Z" fill="#d8b28a" opacity=".45"/>
+  <circle cx="245" cy="210" r="42" fill="#d8b28a"/>
+</svg>

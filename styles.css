@@ -132,7 +132,9 @@ a {
 
 .site-nav a,
 .site-footer a,
-.contact-links a {
+.contact-links a,
+.intro-link,
+.work-card {
   text-decoration: none;
 }
 
@@ -265,9 +267,16 @@ h1 {
   color: var(--paper);
 }
 
-.intro-grid article {
+.intro-link {
+  display: block;
   padding: 28px;
   border-left: 1px solid rgba(216, 178, 138, 0.22);
+  color: inherit;
+  transition: background 180ms ease;
+}
+
+.intro-link:hover {
+  background: rgba(216, 178, 138, 0.08);
 }
 
 .intro-grid span,
@@ -277,8 +286,7 @@ h1 {
   font-weight: 700;
 }
 
-.intro-grid h2,
-.intro-grid p {
+.intro-grid h2 {
   margin-bottom: 0;
 }
 
@@ -325,6 +333,7 @@ h1 {
 }
 
 .work-card {
+  display: block;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 6px;
@@ -342,8 +351,48 @@ h1 {
 
 .work-image {
   min-height: 280px;
-  background-position: center;
-  background-size: cover;
+  background: var(--coffee);
+}
+
+.slideshow {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  min-height: 0;
+}
+
+.slideshow-track {
+  display: flex;
+  width: 300%;
+  height: 100%;
+  animation: slideGallery 12s ease-in-out infinite;
+}
+
+.slideshow-track img {
+  width: 33.3333%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes slideGallery {
+  0%,
+  24% {
+    transform: translateX(0);
+  }
+
+  34%,
+  58% {
+    transform: translateX(-33.3333%);
+  }
+
+  68%,
+  92% {
+    transform: translateX(-66.6666%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .work-image.sports {
@@ -403,10 +452,9 @@ h1 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.project-list article,
-.layout-showcase article {
+.project-list .work-card,
+.layout-showcase .work-card {
   min-height: 190px;
-  padding: 22px;
   border: 1px solid var(--line);
   border-radius: 6px;
   background: rgba(216, 178, 138, 0.2);
@@ -418,15 +466,6 @@ h1 {
 
 .layout-showcase {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.layout-showcase article {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background:
-    linear-gradient(90deg, transparent 18%, rgba(61, 36, 16, 0.08) 18% 19%, transparent 19%),
-    rgba(243, 230, 213, 0.52);
 }
 
 .about {
@@ -443,6 +482,32 @@ h1 {
 
 .about-copy p {
   color: rgba(243, 230, 213, 0.82);
+}
+
+.about-copy {
+  display: flex;
+  flex-direction: column;
+  min-height: 210px;
+}
+
+.about-copy .is-hidden {
+  display: none;
+}
+
+.about-toggle {
+  width: max-content;
+  margin: auto 0 0 auto;
+  border-color: rgba(216, 178, 138, 0.28);
+  background: rgba(61, 36, 16, 0.28);
+}
+
+.about-toggle .language-button {
+  color: var(--sand);
+}
+
+.about-toggle .language-button.active {
+  color: var(--espresso);
+  background: var(--sand);
 }
 
 .contact-links {
@@ -473,6 +538,34 @@ h1 {
   font-weight: 700;
 }
 
+.detail-hero {
+  padding-top: clamp(72px, 11vw, 142px);
+  padding-bottom: clamp(46px, 8vw, 88px);
+}
+
+.detail-hero h1 {
+  color: var(--espresso);
+}
+
+.detail-gallery {
+  padding-top: 0;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.detail-grid img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--coffee);
+}
+
 @media (max-width: 980px) {
   h1 {
     font-size: 5rem;
@@ -492,7 +585,8 @@ h1 {
   .intro-grid,
   .gallery-grid,
   .project-list,
-  .layout-showcase {
+  .layout-showcase,
+  .detail-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -523,10 +617,6 @@ h1 {
     padding-bottom: 4px;
   }
 
-  .language-toggle {
-    align-self: flex-start;
-  }
-
   .hero {
     min-height: auto;
     padding-top: 28px;
@@ -539,17 +629,22 @@ h1 {
   .intro-grid,
   .gallery-grid,
   .project-list,
-  .layout-showcase {
+  .layout-showcase,
+  .detail-grid {
     grid-template-columns: 1fr;
   }
 
-  .intro-grid article {
+  .intro-link {
     padding: 22px 0;
     border-left: 0;
     border-top: 1px solid rgba(216, 178, 138, 0.22);
   }
 
   .work-image {
+    min-height: 240px;
+  }
+
+  .slideshow {
     min-height: 240px;
   }
 
