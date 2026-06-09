@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lietotajs2014 | Visual Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header" id="top">
+    <a class="brand" href="#top" aria-label="Go to top">
+      <span class="brand-mark"></span>
+      <span>lietotajs2014</span>
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="#photography">Photography</a>
+      <a href="#photoshop">Photoshop</a>
+      <a href="#indesign">InDesign</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-media" aria-hidden="true">
+        <img src="assets/portfolio-hero.png" alt="">
+      </div>
+
+      <div class="hero-copy">
+        <p class="eyebrow">Photography / design / visual archive</p>
+        <h1 id="hero-title">Portfolio over the years</h1>
+        <p class="intro">A quiet collection of sports, events, street moments, art studies, Photoshop edits, and InDesign projects.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#photography">View work</a>
+          <a class="button secondary" href="#about">Contact</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section intro-grid" aria-label="Portfolio summary">
+      <article>
+        <span>01</span>
+        <h2>Photography</h2>
+        <p>Sports, events, street observations, and art-led image series gathered as a visual timeline.</p>
+      </article>
+      <article>
+        <span>02</span>
+        <h2>Photoshop</h2>
+        <p>Composites, edits, retouching, posters, and experiments made through digital image work.</p>
+      </article>
+      <article>
+        <span>03</span>
+        <h2>InDesign</h2>
+        <p>Editorial layouts, printed studies, booklets, posters, and page systems built for communication.</p>
+      </article>
+    </section>
+
+    <section class="section" id="photography" aria-labelledby="photography-title">
+      <div class="section-heading">
+        <p class="eyebrow">Selected archive</p>
+        <h2 id="photography-title">Photography</h2>
+      </div>
+
+      <div class="filters" aria-label="Photography categories">
+        <button class="filter-button active" type="button" data-filter="all">All</button>
+        <button class="filter-button" type="button" data-filter="sports">Sports</button>
+        <button class="filter-button" type="button" data-filter="events">Events</button>
+        <button class="filter-button" type="button" data-filter="street">Street</button>
+        <button class="filter-button" type="button" data-filter="art">Art</button>
+      </div>
+
+      <div class="gallery-grid">
+        <article class="work-card" data-category="sports">
+          <div class="work-image sports"></div>
+          <div class="work-info">
+            <p>Sports</p>
+            <h3>Motion Studies</h3>
+          </div>
+        </article>
+        <article class="work-card" data-category="events">
+          <div class="work-image events"></div>
+          <div class="work-info">
+            <p>Events</p>
+            <h3>Shared Light</h3>
+          </div>
+        </article>
+        <article class="work-card" data-category="street">
+          <div class="work-image street"></div>
+          <div class="work-info">
+            <p>Street</p>
+            <h3>Passing Frames</h3>
+          </div>
+        </article>
+        <article class="work-card" data-category="art">
+          <div class="work-image art"></div>
+          <div class="work-info">
+            <p>Art</p>
+            <h3>Material Experiments</h3>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section split-section" id="photoshop" aria-labelledby="photoshop-title">
+      <div class="section-heading">
+        <p class="eyebrow">Digital image work</p>
+        <h2 id="photoshop-title">Photoshop</h2>
+      </div>
+      <div class="project-list">
+        <article>
+          <h3>Photo Manipulation</h3>
+          <p>Layered edits, clean cutouts, color correction, and atmosphere-building for finished images.</p>
+        </article>
+        <article>
+          <h3>Poster Concepts</h3>
+          <p>Visual compositions made from photography, texture, typography, and experimental treatment.</p>
+        </article>
+        <article>
+          <h3>Retouching</h3>
+          <p>Small corrections and polish while keeping the original character of each photograph intact.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section split-section indesign" id="indesign" aria-labelledby="indesign-title">
+      <div class="section-heading">
+        <p class="eyebrow">Layout projects</p>
+        <h2 id="indesign-title">InDesign</h2>
+      </div>
+      <div class="layout-showcase">
+        <article>
+          <span>Editorial</span>
+          <h3>Magazine Spreads</h3>
+        </article>
+        <article>
+          <span>Print</span>
+          <h3>Posters & Flyers</h3>
+        </article>
+        <article>
+          <span>Publication</span>
+          <h3>Booklets</h3>
+        </article>
+      </div>
+    </section>
+
+    <section class="about section" id="about" aria-labelledby="about-title">
+      <div>
+        <p class="eyebrow">About</p>
+        <h2 id="about-title">I make photographs, edits, and layouts with a calm eye for mood.</h2>
+      </div>
+      <div class="about-copy">
+        <p>This portfolio gathers creative work from different years: moments photographed in motion, event details, street scenes, art experiments, Photoshop edits, and InDesign layouts.</p>
+        <div class="contact-links" aria-label="Contact links">
+          <a href="https://www.instagram.com/lietotajs2014/" target="_blank" rel="noreferrer">Instagram @lietotajs2014</a>
+          <a href="mailto:lietotajs2014@gmail.com">lietotajs2014@gmail.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 lietotajs2014. Portfolio of photography and design.</p>
+    <a href="#top">Back to top</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
