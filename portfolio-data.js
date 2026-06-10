@@ -636,84 +636,84 @@ window.PORTFOLIO_ITEMS = {
       "caption": "12. klases Žetonfilma",
       "featured": true,
       "showcase": true,
-      "videoUrl": "assets/uploads/zetonfilma_done-2.mp4"
+      "videoUrl": "https://youtu.be/wm9Y4tq0BT8"
     },
     {
       "src": "assets/uploads/dsc_0036-6.jpg",
       "caption": "12. klases Žetonfilma",
       "featured": true,
       "showcase": true,
-      "videoUrl": "assets/uploads/zetonfilma_done-2.mp4"
+      "videoUrl": "https://youtu.be/wm9Y4tq0BT8"
     },
     {
       "src": "assets/uploads/dsc_0179.jpg",
       "caption": "12. klases Žetonfilma",
       "featured": true,
       "showcase": true,
-      "videoUrl": "assets/uploads/zetonfilma_done-2.mp4"
+      "videoUrl": "https://youtu.be/wm9Y4tq0BT8"
     },
     {
       "src": "assets/uploads/dsc-53.jpg",
       "caption": "Saulrieši",
       "featured": true,
       "showcase": true,
-      "videoUrl": "assets/uploads/saulrie-u-karjers-2.mp4"
+      "videoUrl": "https://youtu.be/I8a53b17000"
     },
     {
       "src": "assets/uploads/dsc-95.jpg",
       "caption": "Saulrieši",
       "featured": true,
       "showcase": true,
-      "videoUrl": "assets/uploads/saulrie-u-karjers-2.mp4"
+      "videoUrl": "https://youtu.be/I8a53b17000"
     },
     {
       "src": "assets/uploads/dsc-127.jpg",
       "caption": "Saulrieši",
       "featured": true,
       "showcase": true,
-      "videoUrl": "assets/uploads/saulrie-u-karjers-2.mp4"
+      "videoUrl": "https://youtu.be/I8a53b17000"
     },
     {
       "src": "assets/uploads/dsc01528.jpg",
       "caption": "Lucid Dreaming",
       "featured": true,
       "showcase": true,
-      "videoUrl": "assets/uploads/lucid-dreaming.mp4"
+      "videoUrl": "https://youtu.be/QpCfxW2sjPg"
     },
     {
       "src": "assets/uploads/jupiter.jpg",
       "caption": "Lucid Dreaming",
       "featured": true,
       "showcase": true,
-      "videoUrl": "assets/uploads/lucid-dreaming.mp4"
+      "videoUrl": "https://youtu.be/QpCfxW2sjPg"
     },
     {
       "src": "assets/uploads/viz-tkarte_2.png",
       "caption": "Lucid Dreaming",
       "featured": true,
       "showcase": true,
-      "videoUrl": "assets/uploads/lucid-dreaming.mp4"
+      "videoUrl": "https://youtu.be/QpCfxW2sjPg"
     },
     {
       "src": "assets/uploads/dsc01858.jpg",
       "caption": "Castle Crashers theme",
       "featured": true,
       "showcase": true,
-      "videoUrl": "assets/uploads/castle-crashers-theme.mp4"
+      "videoUrl": "https://youtu.be/6yxRHGp90l0"
     },
     {
       "src": "assets/uploads/dsc03111.jpg",
       "caption": "Castle Crashers theme",
       "featured": true,
       "showcase": true,
-      "videoUrl": "assets/uploads/castle-crashers-theme.mp4"
+      "videoUrl": "https://youtu.be/6yxRHGp90l0"
     },
     {
       "src": "assets/uploads/dsc03133.jpg",
       "caption": "Castle Crashers theme",
       "featured": true,
       "showcase": true,
-      "videoUrl": "assets/uploads/castle-crashers-theme.mp4"
+      "videoUrl": "https://youtu.be/6yxRHGp90l0"
     }
   ]
 };
