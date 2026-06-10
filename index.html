@@ -1,152 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="lv">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Olivera Švāna portfolio</title>
+  <title>Olivera Švāna Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main>
+  <main id="top">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-media" aria-hidden="true">
-        <img src="assets/portfolio-hero.png" alt="">
+        <div class="hero-marquee" data-hero-marquee></div>
       </div>
 
       <div class="hero-copy">
-        <p class="eyebrow">Photography / design</p>
-        <h1 id="hero-title">Olivera Švāna portfolio</h1>
+        <h1 id="hero-title">
+          <span class="hero-name">Olivera Švāna</span>
+          <span class="hero-portfolio">Portfolio</span>
+        </h1>
         <div class="hero-actions">
-          <a class="button primary" href="#photography">View work</a>
-          <a class="button secondary" href="#about">Contact</a>
+          <a class="button secondary" href="#about">Kontakti</a>
         </div>
       </div>
     </section>
 
-    <section class="section intro-grid" aria-label="Portfolio summary">
-      <a class="intro-link" href="#photography" aria-label="Go to Photography section">
-        <span>01</span>
-        <h2>Photography</h2>
-      </a>
-      <a class="intro-link" href="#photoshop" aria-label="Go to Photoshop section">
-        <span>02</span>
-        <h2>Photoshop</h2>
-      </a>
-      <a class="intro-link" href="#indesign" aria-label="Go to InDesign section">
-        <span>03</span>
-        <h2>InDesign</h2>
-      </a>
-    </section>
-
-    <section class="section" id="photography" aria-labelledby="photography-title">
+    <section class="section split-section" id="photography" aria-labelledby="photography-title">
       <div class="section-heading">
-        <p class="eyebrow">Categories</p>
-        <h2 id="photography-title">Photography</h2>
+        <h2 id="photography-title">
+          Fotografēšana
+          <span class="app-icons" aria-label="Lightroom un Photoshop">
+            <img src="assets/lightroom.png" alt="Lightroom">
+            <img src="assets/photoshop.png" alt="Photoshop">
+          </span>
+        </h2>
       </div>
 
-      <div class="filters" aria-label="Photography categories">
-        <button class="filter-button active" type="button" data-filter="all">All</button>
-        <button class="filter-button" type="button" data-filter="sports">Sports</button>
-        <button class="filter-button" type="button" data-filter="events">Events</button>
-        <button class="filter-button" type="button" data-filter="street">Street</button>
-        <button class="filter-button" type="button" data-filter="art">Art</button>
-      </div>
-
-      <div class="gallery-grid">
+      <div class="photo-showcase card-list">
+        <a class="work-card" href="work.html?project=nature" data-category="nature">
+          <div class="work-image slideshow">
+            <div class="slideshow-track"></div>
+          </div>
+          <div class="work-info">
+            <h3>Daba</h3>
+          </div>
+        </a>
+        <a class="work-card" href="work.html?project=art" data-category="art">
+          <div class="work-image slideshow">
+            <div class="slideshow-track"></div>
+          </div>
+          <div class="work-info">
+            <h3>Māksla</h3>
+          </div>
+        </a>
+        <a class="work-card" href="work.html?project=events" data-category="events">
+          <div class="work-image slideshow">
+            <div class="slideshow-track"></div>
+          </div>
+          <div class="work-info">
+            <h3>Pasākumi</h3>
+          </div>
+        </a>
+        <a class="work-card" href="work.html?project=portraits" data-category="portraits">
+          <div class="work-image slideshow">
+            <div class="slideshow-track"></div>
+          </div>
+          <div class="work-info">
+            <h3>Portreti</h3>
+          </div>
+        </a>
         <a class="work-card" href="work.html?project=sports" data-category="sports">
           <div class="work-image slideshow">
-            <div class="slideshow-track">
-              <img src="assets/temp-sports.svg" alt="">
-              <img src="assets/portfolio-hero.png" alt="">
-              <img src="assets/temp-events.svg" alt="">
-            </div>
+            <div class="slideshow-track"></div>
           </div>
           <div class="work-info">
             <h3>Sports</h3>
           </div>
         </a>
-        <a class="work-card" href="work.html?project=events" data-category="events">
-          <div class="work-image slideshow">
-            <div class="slideshow-track">
-              <img src="assets/temp-events.svg" alt="">
-              <img src="assets/portfolio-hero.png" alt="">
-              <img src="assets/temp-art.svg" alt="">
-            </div>
-          </div>
-          <div class="work-info">
-            <h3>Events</h3>
-          </div>
-        </a>
         <a class="work-card" href="work.html?project=street" data-category="street">
           <div class="work-image slideshow">
-            <div class="slideshow-track">
-              <img src="assets/temp-street.svg" alt="">
-              <img src="assets/portfolio-hero.png" alt="">
-              <img src="assets/temp-sports.svg" alt="">
-            </div>
+            <div class="slideshow-track"></div>
           </div>
           <div class="work-info">
             <h3>Street</h3>
           </div>
         </a>
-        <a class="work-card" href="work.html?project=art" data-category="art">
+        <a class="work-card" href="work.html?project=photoshop" data-category="photoshop">
           <div class="work-image slideshow">
-            <div class="slideshow-track">
-              <img src="assets/temp-art.svg" alt="">
-              <img src="assets/portfolio-hero.png" alt="">
-              <img src="assets/temp-layout.svg" alt="">
-            </div>
+            <div class="slideshow-track"></div>
           </div>
           <div class="work-info">
-            <h3>Art</h3>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <section class="section split-section" id="photoshop" aria-labelledby="photoshop-title">
-      <div class="section-heading">
-        <p class="eyebrow">Projects</p>
-        <h2 id="photoshop-title">Photoshop</h2>
-      </div>
-      <div class="project-list card-list">
-        <a class="work-card" href="work.html?project=photo-manipulation">
-          <div class="work-image slideshow">
-            <div class="slideshow-track">
-              <img src="assets/temp-art.svg" alt="">
-              <img src="assets/temp-street.svg" alt="">
-              <img src="assets/portfolio-hero.png" alt="">
-            </div>
-          </div>
-          <div class="work-info">
-            <h3>Photo Manipulation</h3>
-          </div>
-        </a>
-        <a class="work-card" href="work.html?project=poster-concepts">
-          <div class="work-image slideshow">
-            <div class="slideshow-track">
-              <img src="assets/temp-layout.svg" alt="">
-              <img src="assets/temp-events.svg" alt="">
-              <img src="assets/temp-art.svg" alt="">
-            </div>
-          </div>
-          <div class="work-info">
-            <h3>Poster Concepts</h3>
-          </div>
-        </a>
-        <a class="work-card" href="work.html?project=retouching">
-          <div class="work-image slideshow">
-            <div class="slideshow-track">
-              <img src="assets/portfolio-hero.png" alt="">
-              <img src="assets/temp-sports.svg" alt="">
-              <img src="assets/temp-street.svg" alt="">
-            </div>
-          </div>
-          <div class="work-info">
-            <h3>Retouching</h3>
+            <h3>Photoshop</h3>
           </div>
         </a>
       </div>
@@ -154,17 +100,17 @@
 
     <section class="section split-section indesign" id="indesign" aria-labelledby="indesign-title">
       <div class="section-heading">
-        <p class="eyebrow">Projects</p>
-        <h2 id="indesign-title">InDesign</h2>
+        <h2 id="indesign-title">
+          Maketēšana
+          <span class="app-icons" aria-label="InDesign">
+            <img src="assets/indesign.png" alt="InDesign">
+          </span>
+        </h2>
       </div>
       <div class="layout-showcase card-list">
         <a class="work-card" href="work.html?project=gimnazijas-laiki">
           <div class="work-image slideshow">
-            <div class="slideshow-track">
-              <img src="assets/temp-layout.svg" alt="">
-              <img src="assets/temp-art.svg" alt="">
-              <img src="assets/temp-street.svg" alt="">
-            </div>
+            <div class="slideshow-track"></div>
           </div>
           <div class="work-info">
             <h3>Ğimnāzijas Laiki</h3>
@@ -172,11 +118,7 @@
         </a>
         <a class="work-card" href="work.html?project=dzejas-krajums">
           <div class="work-image slideshow">
-            <div class="slideshow-track">
-              <img src="assets/temp-layout.svg" alt="">
-              <img src="assets/temp-sports.svg" alt="">
-              <img src="assets/temp-art.svg" alt="">
-            </div>
+            <div class="slideshow-track"></div>
           </div>
           <div class="work-info">
             <h3>Dzejas krājums</h3>
@@ -185,27 +127,46 @@
       </div>
     </section>
 
+    <section class="section split-section video-editing" id="video-editing" aria-labelledby="video-title">
+      <div class="section-heading">
+        <h2 id="video-title">
+          Video montēšana
+          <span class="app-icons" aria-label="Premiere Pro">
+            <img src="assets/premiere.png" alt="Premiere Pro">
+          </span>
+        </h2>
+      </div>
+      <div class="video-showcase card-list" data-video-showcase></div>
+    </section>
+
     <section class="about section" id="about" aria-labelledby="about-title">
-      <div>
-        <p class="eyebrow">About</p>
-        <h2 id="about-title">Photography / Photoshop / InDesign</h2>
+      <div class="about-main">
+        <p class="eyebrow">Par mani</p>
+        <h2 id="about-title">Esmu 18 gadus vecs bohēmists no Berģiem ar 4+ gadu pieredzi pasākumu, ielas un mākslas fotografēšanā, skolas avīzes maketēšanā un video montēšanā. <br> <br>
+          Katram darbam es pieķeros ar sirdi un pabeidzu vienmēr līdz galam. <br><br>
+          Pabeidzis RV1Ģ fiziķus/programmētājus :)</h2>
       </div>
       <div class="about-copy">
-        <p>This portfolio gathers work from different years: photography, Photoshop edits, and InDesign projects.</p>
-        <div class="contact-links" aria-label="Contact links">
-          <a href="https://www.instagram.com/lietotajs2014/" target="_blank" rel="noreferrer">Instagram @lietotajs2014</a>
+        <p class="eyebrow contact-eyebrow">Kontakti</p>
+        <div class="contact-links" aria-label="Kontakti">
+          <a class="instagram-link" href="https://www.instagram.com/lietotajs2014/" target="_blank" rel="noreferrer" aria-label="Instagram">
+            <img src="assets/instagram.svg" alt="">
+            <span>@lietotajs2014</span>
+          </a>
+          <a href="tel:+37125270004">+371 25270004</a>
           <a href="mailto:lietotajs2014@gmail.com">lietotajs2014@gmail.com</a>
         </div>
       </div>
     </section>
+
   </main>
 
   <footer class="site-footer">
-    <p>&copy; 2026 lietotajs2014.</p>
-    <a href="#top">Back to top</a>
+    <p>&copy; 2026 lietotajs2014</p>
+    <a href="#top">Uz sākumu</a>
   </footer>
 
-  <script src="portfolio-data.js"></script>
-  <script src="script.js"></script>
+  <script src="portfolio-data.js?v=16"></script>
+  <script src="script.js?v=16"></script>
 </body>
 </html>
