@@ -252,6 +252,7 @@ class PortfolioManager(tk.Tk):
         self.pending = {}
         self.thumbnail_cache = {}
         self.existing_load_after_id = None
+        self.pending_existing_selection = set()
 
         self.project_var = tk.StringVar(value=PROJECTS[0][1])
         self.caption_var = tk.StringVar()
@@ -344,8 +345,10 @@ class PortfolioManager(tk.Tk):
         self.filter_select.bind("<<ComboboxSelected>>", lambda _event: self.refresh_existing_images())
 
         ttk.Button(manage_toolbar, text="Refresh", command=self.refresh_existing_images).grid(row=1, column=1, padx=(0, 8))
-        ttk.Button(manage_toolbar, text="Toggle highlight", command=self.toggle_highlight).grid(row=1, column=2, padx=(0, 8))
-        ttk.Button(manage_toolbar, text="Remove from website", command=self.remove_existing_images).grid(row=1, column=3)
+        ttk.Button(manage_toolbar, text="Move up", command=lambda: self.move_existing_images(-1)).grid(row=1, column=2, padx=(0, 8))
+        ttk.Button(manage_toolbar, text="Move down", command=lambda: self.move_existing_images(1)).grid(row=1, column=3, padx=(0, 8))
+        ttk.Button(manage_toolbar, text="Toggle highlight", command=self.toggle_highlight).grid(row=1, column=4, padx=(0, 8))
+        ttk.Button(manage_toolbar, text="Remove from website", command=self.remove_existing_images).grid(row=1, column=5)
 
         ttk.Label(manage_toolbar, text="Edit category").grid(row=2, column=0, sticky="w", pady=(12, 0))
         self.existing_project_select = ttk.Combobox(
@@ -746,13 +749,18 @@ class PortfolioManager(tk.Tk):
             return None
         return project_key(label)
 
-    def refresh_existing_images(self):
+    def refresh_existing_images(self, keep_selection=None):
         if not hasattr(self, "existing_tree"):
             return
 
         if self.existing_load_after_id:
             self.after_cancel(self.existing_load_after_id)
             self.existing_load_after_id = None
+
+        if keep_selection is not None:
+            self.pending_existing_selection = set(keep_selection)
+        else:
+            self.pending_existing_selection = set()
 
         existing_rows = self.existing_tree.get_children()
         if existing_rows:
@@ -784,13 +792,16 @@ class PortfolioManager(tk.Tk):
             highlighted = "Yes" if item.get("featured") else "No"
             video_url = item.get("videoUrl", "")
             image = self.get_thumbnail(src)
+            item_id = f"{key}:{index}"
             self.existing_tree.insert(
                 "",
                 "end",
-                iid=f"{key}:{index}",
+                iid=item_id,
                 image=image,
                 values=(label, caption, highlighted, video_url, src),
             )
+            if item_id in self.pending_existing_selection:
+                self.existing_tree.selection_add(item_id)
 
         if end < len(rows):
             self.status_var.set(f"Loaded {end} of {len(rows)} image(s)...")
@@ -801,6 +812,12 @@ class PortfolioManager(tk.Tk):
         else:
             self.existing_load_after_id = None
             self.status_var.set(f"Showing {len(rows)} image(s)")
+            if self.pending_existing_selection:
+                selected_rows = self.existing_tree.selection()
+                if selected_rows:
+                    self.existing_tree.focus(selected_rows[0])
+                    self.existing_tree.see(selected_rows[0])
+                self.pending_existing_selection = set()
 
     def selected_existing_items(self):
         selected = []
@@ -863,6 +880,59 @@ class PortfolioManager(tk.Tk):
         save_data(data)
         self.refresh_existing_images()
         messagebox.showinfo("Updated", f"Updated {updated_count} image(s).")
+
+    def move_existing_images(self, direction):
+        selected = self.selected_existing_items()
+        if not selected:
+            messagebox.showinfo("No selection", "Select one or more added images first.")
+            return
+
+        selected_keys = {key for key, _index in selected}
+        if len(selected_keys) > 1:
+            messagebox.showwarning("One category", "Move images inside one category at a time.")
+            return
+
+        key = selected[0][0]
+        data = load_data()
+        items = data.get(key, [])
+        if not isinstance(items, list):
+            return
+
+        selected_indexes = sorted({
+            index for _key, index in selected
+            if 0 <= index < len(items)
+        })
+        if not selected_indexes:
+            return
+
+        selected_set = set(selected_indexes)
+        moved = False
+
+        if direction < 0:
+            for index in selected_indexes:
+                target = index - 1
+                if target < 0 or target in selected_set:
+                    continue
+                items[target], items[index] = items[index], items[target]
+                selected_set.remove(index)
+                selected_set.add(target)
+                moved = True
+        else:
+            for index in reversed(selected_indexes):
+                target = index + 1
+                if target >= len(items) or target in selected_set:
+                    continue
+                items[target], items[index] = items[index], items[target]
+                selected_set.remove(index)
+                selected_set.add(target)
+                moved = True
+
+        if not moved:
+            return
+
+        save_data(data)
+        keep_selection = [f"{key}:{index}" for index in sorted(selected_set)]
+        self.refresh_existing_images(keep_selection=keep_selection)
 
     def remove_existing_images(self):
         selected = self.selected_existing_items()
