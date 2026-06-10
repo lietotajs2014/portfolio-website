@@ -43,197 +43,52 @@ const buildGallery = (sources) => {
   }));
 };
 
-const defaultVideoFrames = buildGallery([
-  {
-    src: galleryImages.events,
-    caption: "12. klases Žetonfilma",
-    videoUrl: "https://example.com/zetonfilma",
-    featured: true
-  },
-  {
-    src: galleryImages.street,
-    caption: "12. klases Žetonfilma",
-    videoUrl: "https://example.com/zetonfilma",
-    featured: true
-  },
-  {
-    src: galleryImages.art,
-    caption: "12. klases Žetonfilma",
-    videoUrl: "https://example.com/zetonfilma",
-    featured: true
-  },
-  {
-    src: galleryImages.layout,
-    caption: "Saulrieši",
-    videoUrl: "https://example.com/saulriesi",
-    featured: true
-  },
-  {
-    src: galleryImages.hero,
-    caption: "Saulrieši",
-    videoUrl: "https://example.com/saulriesi",
-    featured: true
-  },
-  {
-    src: galleryImages.sports,
-    caption: "Saulrieši",
-    videoUrl: "https://example.com/saulriesi",
-    featured: true
-  },
-  {
-    src: galleryImages.events,
-    caption: "Lucid Dreaming",
-    videoUrl: "https://example.com/lucid-dreaming",
-    featured: true
-  },
-  {
-    src: galleryImages.art,
-    caption: "Lucid Dreaming",
-    videoUrl: "https://example.com/lucid-dreaming",
-    featured: true
-  },
-  {
-    src: galleryImages.street,
-    caption: "Lucid Dreaming",
-    videoUrl: "https://example.com/lucid-dreaming",
-    featured: true
-  },
-  {
-    src: galleryImages.sports,
-    caption: "Castle Crashers theme",
-    videoUrl: "https://example.com/castle-crashers-theme",
-    featured: true
-  },
-  {
-    src: galleryImages.layout,
-    caption: "Castle Crashers theme",
-    videoUrl: "https://example.com/castle-crashers-theme",
-    featured: true
-  },
-  {
-    src: galleryImages.hero,
-    caption: "Castle Crashers theme",
-    videoUrl: "https://example.com/castle-crashers-theme",
-    featured: true
-  }
-]);
+const defaultVideoFrames = [];
 
 const projectImages = {
   nature: {
     title: "Daba",
-    images: buildGallery([
-      galleryImages.street,
-      galleryImages.art,
-      galleryImages.hero,
-      galleryImages.layout,
-      galleryImages.events,
-      galleryImages.sports,
-      galleryImages.street
-    ])
+    images: []
   },
   sports: {
     title: "Sports",
-    images: buildGallery([
-      galleryImages.sports,
-      galleryImages.hero,
-      galleryImages.events,
-      galleryImages.street,
-      galleryImages.art,
-      galleryImages.layout,
-      galleryImages.sports
-    ])
+    images: []
   },
   events: {
     title: "Pasākumi",
-    images: buildGallery([
-      galleryImages.events,
-      galleryImages.hero,
-      galleryImages.art,
-      galleryImages.layout,
-      galleryImages.street,
-      galleryImages.events,
-      galleryImages.sports
-    ])
+    images: []
   },
   street: {
     title: "Street",
-    images: buildGallery([
-      galleryImages.street,
-      galleryImages.hero,
-      galleryImages.sports,
-      galleryImages.art,
-      galleryImages.layout,
-      galleryImages.events,
-      galleryImages.street
-    ])
+    images: []
   },
   art: {
     title: "Māksla",
-    images: buildGallery([
-      galleryImages.art,
-      galleryImages.hero,
-      galleryImages.layout,
-      galleryImages.street,
-      galleryImages.events,
-      galleryImages.sports,
-      galleryImages.art
-    ])
+    images: []
   },
   portraits: {
     title: "Portreti",
-    images: buildGallery([
-      galleryImages.hero,
-      galleryImages.street,
-      galleryImages.sports,
-      galleryImages.art,
-      galleryImages.layout,
-      galleryImages.events,
-      galleryImages.hero
-    ])
+    images: []
   },
   photoshop: {
     title: "Photoshop",
     titleIcon: "assets/photoshop.png",
     titleIconAlt: "Photoshop",
-    images: buildGallery([
-      galleryImages.art,
-      galleryImages.street,
-      galleryImages.hero,
-      galleryImages.layout,
-      galleryImages.events,
-      galleryImages.art,
-      galleryImages.street
-    ])
+    images: []
   },
   "gimnazijas-laiki": {
     title: "Ğimnāzijas Laiki",
-    images: buildGallery([
-      galleryImages.layout,
-      galleryImages.art,
-      galleryImages.street,
-      galleryImages.hero,
-      galleryImages.events,
-      galleryImages.layout,
-      galleryImages.sports
-    ])
+    images: []
   },
   "dzejas-krajums": {
     title: "Dzejas krājums",
-    images: buildGallery([
-      galleryImages.layout,
-      galleryImages.sports,
-      galleryImages.art,
-      galleryImages.street,
-      galleryImages.hero,
-      galleryImages.events,
-      galleryImages.layout
-    ])
+    images: []
   },
   "video-editing": {
     title: "Video montēšana",
     titleIcon: "assets/premiere.png",
     titleIconAlt: "Premiere Pro",
-    images: defaultVideoFrames
+    images: []
   }
 };
 
@@ -278,6 +133,11 @@ const renderHeroMarquee = () => {
     .map((item) => item?.src)
     .filter(Boolean);
   const uniqueImages = Array.from(new Set(submittedImages));
+  if (uniqueImages.length === 0) {
+    heroMarquee.innerHTML = "";
+    return;
+  }
+
   const version = `${uniqueImages.length}-${uniqueImages.join("|").length}`;
   const marqueeSrc = `assets/hero-marquee.jpg?v=${escapeHtml(version)}`;
 
@@ -355,7 +215,7 @@ const renderVideoShowcase = () => {
   }
 
   const projectItems = projectImages["video-editing"]?.images || [];
-  const items = projectItems.some((item) => item.videoUrl) ? projectItems : defaultVideoFrames;
+  const items = projectItems;
   const groups = new Map();
 
   items
