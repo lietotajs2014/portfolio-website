@@ -6,6 +6,25 @@ const lightboxCaption = document.querySelector("[data-lightbox-caption]");
 const lightboxClose = document.querySelector("[data-lightbox-close]");
 const heroMarquee = document.querySelector("[data-hero-marquee]");
 
+const registerPortfolioOpen = () => {
+  const storageKey = "olivera-portfolio-counted-v1";
+  try {
+    if (window.localStorage?.getItem(storageKey)) {
+      return;
+    }
+    window.localStorage?.setItem(storageKey, new Date().toISOString());
+  } catch (_error) {
+    // If storage is blocked, still allow the public counter pixel to load.
+  }
+
+  const pixel = new Image(1, 1);
+  pixel.referrerPolicy = "no-referrer";
+  pixel.alt = "";
+  pixel.src = "https://counterapi.com/pixel.gif?ns=olivera-tomasa-svana-portfolio&action=site-open&key=unique-device";
+};
+
+registerPortfolioOpen();
+
 const galleryImages = {
   sports: "assets/temp-sports.svg",
   events: "assets/temp-events.svg",
