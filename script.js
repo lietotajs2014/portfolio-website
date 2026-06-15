@@ -4,7 +4,11 @@ const lightbox = document.querySelector("[data-lightbox]");
 const lightboxImage = document.querySelector("[data-lightbox-image]");
 const lightboxCaption = document.querySelector("[data-lightbox-caption]");
 const lightboxClose = document.querySelector("[data-lightbox-close]");
+const lightboxPrev = document.querySelector("[data-lightbox-prev]");
+const lightboxNext = document.querySelector("[data-lightbox-next]");
 const heroMarquee = document.querySelector("[data-hero-marquee]");
+let activeLightboxImages = [];
+let activeLightboxIndex = -1;
 
 const registerPortfolioOpen = () => {
   const storageKey = "olivera-portfolio-counted-v1";
@@ -323,9 +327,41 @@ updateCardPreview("dzejas-krajums", '[href="work.html?project=dzejas-krajums"]')
 applyProjectExternalLink("dzejas-krajums", '[href="work.html?project=dzejas-krajums"]');
 renderVideoShowcase();
 
+const updateLightboxNav = () => {
+  const hasMultipleImages = activeLightboxImages.length > 1;
+
+  if (lightboxPrev) {
+    lightboxPrev.hidden = !hasMultipleImages;
+  }
+
+  if (lightboxNext) {
+    lightboxNext.hidden = !hasMultipleImages;
+  }
+};
+
+const showLightboxImage = (index) => {
+  if (!lightbox || !lightboxImage || !lightboxCaption || activeLightboxImages.length === 0) {
+    return;
+  }
+
+  const normalizedIndex = (index + activeLightboxImages.length) % activeLightboxImages.length;
+  const image = activeLightboxImages[normalizedIndex];
+
+  activeLightboxIndex = normalizedIndex;
+  lightboxImage.src = image.src;
+  lightboxImage.alt = image.caption || "Portfolio attēls";
+  lightboxCaption.textContent = image.caption || "";
+  updateLightboxNav();
+
+  if (!lightbox.open) {
+    lightbox.showModal();
+  }
+};
+
 if (detailTitle && detailGrid) {
   const params = new URLSearchParams(window.location.search);
   const project = projectImages[params.get("project")] || projectImages.sports;
+  activeLightboxImages = project.images.filter((image) => !image.videoUrl);
 
   document.title = `${project.title} | Olivera Švāna portfolio`;
   if (project.titleIcon) {
@@ -335,14 +371,18 @@ if (detailTitle && detailGrid) {
   }
 
   detailGrid.innerHTML = project.images
-    .map((image) => `
+    .map((image) => {
+      const imageIndex = activeLightboxImages.indexOf(image);
+
+      return `
       <figure class="detail-item ${image.layout}">
-        <button class="detail-image-button" type="button" data-image-src="${escapeHtml(image.src)}" data-image-caption="${escapeHtml(image.caption)}" data-video-url="${escapeHtml(image.videoUrl)}">
+        <button class="detail-image-button" type="button" data-image-index="${imageIndex}" data-image-src="${escapeHtml(image.src)}" data-image-caption="${escapeHtml(image.caption)}" data-video-url="${escapeHtml(image.videoUrl)}">
           <img src="${escapeHtml(image.src)}" alt="${escapeHtml(project.title)} attēls" loading="lazy">
         </button>
         ${image.caption ? `<figcaption>${escapeHtml(image.caption)}</figcaption>` : ""}
       </figure>
-    `)
+    `;
+    })
     .join("");
 
   detailGrid.querySelectorAll("img").forEach((image) => {
@@ -366,21 +406,43 @@ document.querySelectorAll("[data-image-src]").forEach((button) => {
       return;
     }
 
-    if (!lightbox || !lightboxImage || !lightboxCaption) {
+    const imageIndex = Number(button.dataset.imageIndex);
+    if (!Number.isFinite(imageIndex) || imageIndex < 0) {
       return;
     }
 
-    lightboxImage.src = button.dataset.imageSrc;
-    lightboxImage.alt = button.dataset.imageCaption || "Portfolio attēls";
-    lightboxCaption.textContent = button.dataset.imageCaption || "";
-    lightbox.showModal();
+    showLightboxImage(imageIndex);
   });
 });
 
 lightboxClose?.addEventListener("click", () => lightbox.close());
 
+lightboxPrev?.addEventListener("click", () => {
+  showLightboxImage(activeLightboxIndex - 1);
+});
+
+lightboxNext?.addEventListener("click", () => {
+  showLightboxImage(activeLightboxIndex + 1);
+});
+
 lightbox?.addEventListener("click", (event) => {
-  if (event.target === lightbox) {
+  if (!event.target.closest("[data-lightbox-frame]")) {
     lightbox.close();
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (!lightbox?.open || activeLightboxImages.length < 2) {
+    return;
+  }
+
+  if (event.key === "ArrowLeft") {
+    event.preventDefault();
+    showLightboxImage(activeLightboxIndex - 1);
+  }
+
+  if (event.key === "ArrowRight") {
+    event.preventDefault();
+    showLightboxImage(activeLightboxIndex + 1);
   }
 });

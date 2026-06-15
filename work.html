@@ -6,8 +6,9 @@
   <title>Darbs | Olivera Švāna portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" href="data:,">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=22">
 </head>
 <body>
   <main>
@@ -22,9 +23,15 @@
   </main>
 
   <dialog class="lightbox" data-lightbox>
-    <button class="lightbox-close" type="button" data-lightbox-close aria-label="Aizvērt attēlu">Aizvērt</button>
-    <img src="" alt="" data-lightbox-image>
-    <p data-lightbox-caption></p>
+    <div class="lightbox-frame" data-lightbox-frame>
+      <button class="lightbox-close" type="button" data-lightbox-close aria-label="Aizvērt attēlu">&times;</button>
+      <div class="lightbox-media">
+        <button class="lightbox-nav lightbox-nav-prev" type="button" data-lightbox-prev aria-label="Iepriekšējais attēls">&#10094;</button>
+        <img src="" alt="" data-lightbox-image>
+        <button class="lightbox-nav lightbox-nav-next" type="button" data-lightbox-next aria-label="Nākamais attēls">&#10095;</button>
+      </div>
+      <p data-lightbox-caption></p>
+    </div>
   </dialog>
 
   <footer class="site-footer">
@@ -33,6 +40,6 @@
   </footer>
 
   <script src="portfolio-data.js?v=21"></script>
-  <script src="script.js?v=21"></script>
+  <script src="script.js?v=22"></script>
 </body>
 </html>
