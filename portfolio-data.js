@@ -703,206 +703,7 @@ window.PORTFOLIO_ITEMS = {
       "src": "assets/uploads/dsc_0953-2.jpg",
       "caption": "",
       "featured": false
-    }
-  ],
-  "portraits": [
-    {
-      "src": "assets/uploads/dsc-195.jpg",
-      "caption": "",
-      "featured": false
     },
-    {
-      "src": "assets/uploads/dsc_0007-3.jpg",
-      "caption": "",
-      "featured": false
-    },
-    {
-      "src": "assets/uploads/dsc_0014-4.jpg",
-      "caption": "",
-      "featured": false
-    },
-    {
-      "src": "assets/uploads/dsc_0042-4.jpg",
-      "caption": "",
-      "featured": false
-    },
-    {
-      "src": "assets/uploads/dsc_0062-10.jpg",
-      "caption": "",
-      "featured": false
-    },
-    {
-      "src": "assets/uploads/dsc_0070-11.jpg",
-      "caption": "",
-      "featured": true
-    },
-    {
-      "src": "assets/uploads/dsc_0129-5.jpg",
-      "caption": "",
-      "featured": false
-    },
-    {
-      "src": "assets/uploads/dsc_0134-5.jpg",
-      "caption": "",
-      "featured": false
-    },
-    {
-      "src": "assets/uploads/dsc_0144-8.jpg",
-      "caption": "",
-      "featured": false
-    },
-    {
-      "src": "assets/uploads/dsc_0151-7.jpg",
-      "caption": "",
-      "featured": false
-    },
-    {
-      "src": "assets/uploads/dsc_0162-7.jpg",
-      "caption": "",
-      "featured": true
-    },
-    {
-      "src": "assets/uploads/dsc_0164-5.jpg",
-      "caption": "",
-      "featured": false
-    },
-    {
-      "src": "assets/uploads/dsc_0169-4.jpg",
-      "caption": "",
-      "featured": true
-    },
-    {
-      "src": "assets/uploads/dsc_0183-7.jpg",
-      "caption": "",
-      "featured": false
-    },
-    {
-      "src": "assets/uploads/dsc_0185-2.jpg",
-      "caption": "",
-      "featured": false
-    },
-    {
-      "src": "assets/uploads/dsc_0206.jpg",
-      "caption": "",
-      "featured": false
-    },
-    {
-      "src": "assets/uploads/dsc_0280-3.jpg",
-      "caption": "",
-      "featured": false
-    },
-    {
-      "src": "assets/uploads/dsc_0317.jpg",
-      "caption": "",
-      "featured": false
-    },
-    {
-      "src": "assets/uploads/dsc_0331.jpg",
-      "caption": "",
-      "featured": false
-    },
-    {
-      "src": "assets/uploads/dsc_0489.jpg",
-      "caption": "",
-      "featured": false
-    },
-    {
-      "src": "assets/uploads/dsc_0644.jpg",
-      "caption": "",
-      "featured": false
-    },
-    {
-      "src": "assets/uploads/dsc_0653.jpg",
-      "caption": "",
-      "featured": false
-    },
-    {
-      "src": "assets/uploads/dsc00557.jpg",
-      "caption": "",
-      "featured": false
-    },
-    {
-      "src": "assets/uploads/dsc00565.jpg",
-      "caption": "",
-      "featured": false
-    },
-    {
-      "src": "assets/uploads/dsc01589.jpg",
-      "caption": "",
-      "featured": true
-    },
-    {
-      "src": "assets/uploads/dsc01892.jpg",
-      "caption": "",
-      "featured": false
-    },
-    {
-      "src": "assets/uploads/dsc02560.jpg",
-      "caption": "",
-      "featured": false
-    },
-    {
-      "src": "assets/uploads/dsc03739.jpg",
-      "caption": "",
-      "featured": true
-    },
-    {
-      "src": "assets/uploads/dsc04831.jpg",
-      "caption": "",
-      "featured": true
-    },
-    {
-      "src": "assets/uploads/dsc04852.jpg",
-      "caption": "",
-      "featured": false
-    },
-    {
-      "src": "assets/uploads/dsc04859.jpg",
-      "caption": "",
-      "featured": true
-    },
-    {
-      "src": "assets/uploads/dsc04860.jpg",
-      "caption": "",
-      "featured": false
-    },
-    {
-      "src": "assets/uploads/dsc04870.jpg",
-      "caption": "",
-      "featured": false
-    },
-    {
-      "src": "assets/uploads/dsc04893.jpg",
-      "caption": "",
-      "featured": false
-    },
-    {
-      "src": "assets/uploads/dsc04903.jpg",
-      "caption": "",
-      "featured": false
-    },
-    {
-      "src": "assets/uploads/dsc04908.jpg",
-      "caption": "",
-      "featured": false
-    },
-    {
-      "src": "assets/uploads/dsc04925.jpg",
-      "caption": "",
-      "featured": true
-    },
-    {
-      "src": "assets/uploads/dsc04930.jpg",
-      "caption": "",
-      "featured": false
-    },
-    {
-      "src": "assets/uploads/dsc04936.jpg",
-      "caption": "",
-      "featured": false
-    }
-  ],
-  "sports": [
     {
       "src": "assets/uploads/dsc-53.jpg",
       "caption": "",
@@ -1117,6 +918,203 @@ window.PORTFOLIO_ITEMS = {
       "src": "assets/uploads/dsc01756.jpg",
       "caption": "",
       "featured": true
+    }
+  ],
+  "portraits": [
+    {
+      "src": "assets/uploads/dsc-195.jpg",
+      "caption": "",
+      "featured": false
+    },
+    {
+      "src": "assets/uploads/dsc_0007-3.jpg",
+      "caption": "",
+      "featured": false
+    },
+    {
+      "src": "assets/uploads/dsc_0014-4.jpg",
+      "caption": "",
+      "featured": false
+    },
+    {
+      "src": "assets/uploads/dsc_0042-4.jpg",
+      "caption": "",
+      "featured": false
+    },
+    {
+      "src": "assets/uploads/dsc_0062-10.jpg",
+      "caption": "",
+      "featured": false
+    },
+    {
+      "src": "assets/uploads/dsc_0070-11.jpg",
+      "caption": "",
+      "featured": true
+    },
+    {
+      "src": "assets/uploads/dsc_0129-5.jpg",
+      "caption": "",
+      "featured": false
+    },
+    {
+      "src": "assets/uploads/dsc_0134-5.jpg",
+      "caption": "",
+      "featured": false
+    },
+    {
+      "src": "assets/uploads/dsc_0144-8.jpg",
+      "caption": "",
+      "featured": false
+    },
+    {
+      "src": "assets/uploads/dsc_0151-7.jpg",
+      "caption": "",
+      "featured": false
+    },
+    {
+      "src": "assets/uploads/dsc_0162-7.jpg",
+      "caption": "",
+      "featured": true
+    },
+    {
+      "src": "assets/uploads/dsc_0164-5.jpg",
+      "caption": "",
+      "featured": false
+    },
+    {
+      "src": "assets/uploads/dsc_0169-4.jpg",
+      "caption": "",
+      "featured": true
+    },
+    {
+      "src": "assets/uploads/dsc_0183-7.jpg",
+      "caption": "",
+      "featured": false
+    },
+    {
+      "src": "assets/uploads/dsc_0185-2.jpg",
+      "caption": "",
+      "featured": false
+    },
+    {
+      "src": "assets/uploads/dsc_0206.jpg",
+      "caption": "",
+      "featured": false
+    },
+    {
+      "src": "assets/uploads/dsc_0280-3.jpg",
+      "caption": "",
+      "featured": false
+    },
+    {
+      "src": "assets/uploads/dsc_0317.jpg",
+      "caption": "",
+      "featured": false
+    },
+    {
+      "src": "assets/uploads/dsc_0331.jpg",
+      "caption": "",
+      "featured": false
+    },
+    {
+      "src": "assets/uploads/dsc_0489.jpg",
+      "caption": "",
+      "featured": false
+    },
+    {
+      "src": "assets/uploads/dsc_0644.jpg",
+      "caption": "",
+      "featured": false
+    },
+    {
+      "src": "assets/uploads/dsc_0653.jpg",
+      "caption": "",
+      "featured": false
+    },
+    {
+      "src": "assets/uploads/dsc00557.jpg",
+      "caption": "",
+      "featured": false
+    },
+    {
+      "src": "assets/uploads/dsc00565.jpg",
+      "caption": "",
+      "featured": false
+    },
+    {
+      "src": "assets/uploads/dsc01589.jpg",
+      "caption": "",
+      "featured": true
+    },
+    {
+      "src": "assets/uploads/dsc01892.jpg",
+      "caption": "",
+      "featured": false
+    },
+    {
+      "src": "assets/uploads/dsc02560.jpg",
+      "caption": "",
+      "featured": false
+    },
+    {
+      "src": "assets/uploads/dsc03739.jpg",
+      "caption": "",
+      "featured": true
+    },
+    {
+      "src": "assets/uploads/dsc04831.jpg",
+      "caption": "",
+      "featured": true
+    },
+    {
+      "src": "assets/uploads/dsc04852.jpg",
+      "caption": "",
+      "featured": false
+    },
+    {
+      "src": "assets/uploads/dsc04859.jpg",
+      "caption": "",
+      "featured": true
+    },
+    {
+      "src": "assets/uploads/dsc04860.jpg",
+      "caption": "",
+      "featured": false
+    },
+    {
+      "src": "assets/uploads/dsc04870.jpg",
+      "caption": "",
+      "featured": false
+    },
+    {
+      "src": "assets/uploads/dsc04893.jpg",
+      "caption": "",
+      "featured": false
+    },
+    {
+      "src": "assets/uploads/dsc04903.jpg",
+      "caption": "",
+      "featured": false
+    },
+    {
+      "src": "assets/uploads/dsc04908.jpg",
+      "caption": "",
+      "featured": false
+    },
+    {
+      "src": "assets/uploads/dsc04925.jpg",
+      "caption": "",
+      "featured": true
+    },
+    {
+      "src": "assets/uploads/dsc04930.jpg",
+      "caption": "",
+      "featured": false
+    },
+    {
+      "src": "assets/uploads/dsc04936.jpg",
+      "caption": "",
+      "featured": false
     }
   ],
   "street": [

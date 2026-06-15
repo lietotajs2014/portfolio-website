@@ -3,12 +3,58 @@ const detailGrid = document.querySelector("[data-project-grid]");
 const lightbox = document.querySelector("[data-lightbox]");
 const lightboxImage = document.querySelector("[data-lightbox-image]");
 const lightboxCaption = document.querySelector("[data-lightbox-caption]");
-const lightboxClose = document.querySelector("[data-lightbox-close]");
 const lightboxPrev = document.querySelector("[data-lightbox-prev]");
 const lightboxNext = document.querySelector("[data-lightbox-next]");
 const heroMarquee = document.querySelector("[data-hero-marquee]");
+const portfolioReturnScrollKey = "olivera-portfolio-return-scroll-v1";
+const portfolioRestoreNextKey = "olivera-portfolio-restore-next-v1";
 let activeLightboxImages = [];
 let activeLightboxIndex = -1;
+
+const rememberPortfolioReturnPosition = () => {
+  try {
+    window.sessionStorage?.setItem(portfolioReturnScrollKey, JSON.stringify({
+      scrollY: window.scrollY,
+      timestamp: Date.now()
+    }));
+  } catch (_error) {
+    // Navigation should still work when storage is unavailable.
+  }
+};
+
+const markPortfolioReturnRequested = () => {
+  try {
+    window.sessionStorage?.setItem(portfolioRestoreNextKey, "1");
+  } catch (_error) {
+    // The title link still falls back to the portfolio section.
+  }
+};
+
+const restorePortfolioReturnPosition = () => {
+  if (!heroMarquee) {
+    return;
+  }
+
+  try {
+    if (window.sessionStorage?.getItem(portfolioRestoreNextKey) !== "1") {
+      return;
+    }
+
+    window.sessionStorage.removeItem(portfolioRestoreNextKey);
+    const storedPosition = JSON.parse(window.sessionStorage.getItem(portfolioReturnScrollKey) || "{}");
+    const scrollY = Number(storedPosition.scrollY);
+
+    if (!Number.isFinite(scrollY)) {
+      return;
+    }
+
+    window.requestAnimationFrame(() => {
+      window.scrollTo({ top: scrollY, behavior: "auto" });
+    });
+  } catch (_error) {
+    window.sessionStorage?.removeItem(portfolioRestoreNextKey);
+  }
+};
 
 const registerPortfolioOpen = () => {
   const storageKey = "olivera-portfolio-counted-v1";
@@ -30,7 +76,6 @@ const registerPortfolioOpen = () => {
 registerPortfolioOpen();
 
 const galleryImages = {
-  sports: "assets/temp-sports.svg",
   events: "assets/temp-events.svg",
   street: "assets/temp-street.svg",
   art: "assets/temp-art.svg",
@@ -73,10 +118,6 @@ const projectImages = {
     title: "Daba",
     images: []
   },
-  sports: {
-    title: "Sports",
-    images: []
-  },
   events: {
     title: "Pasākumi",
     images: []
@@ -95,8 +136,6 @@ const projectImages = {
   },
   photoshop: {
     title: "Photoshop",
-    titleIcon: "assets/photoshop.png",
-    titleIconAlt: "Photoshop",
     images: []
   },
   "gimnazijas-laiki": {
@@ -315,7 +354,6 @@ const scheduleDetailGridLayout = () => {
 };
 
 updateCardPreview("nature", '[href="work.html?project=nature"]');
-updateCardPreview("sports", '[href="work.html?project=sports"]');
 updateCardPreview("events", '[href="work.html?project=events"]');
 updateCardPreview("street", '[href="work.html?project=street"]');
 updateCardPreview("art", '[href="work.html?project=art"]');
@@ -326,6 +364,16 @@ applyProjectExternalLink("gimnazijas-laiki", '[href="work.html?project=gimnazija
 updateCardPreview("dzejas-krajums", '[href="work.html?project=dzejas-krajums"]');
 applyProjectExternalLink("dzejas-krajums", '[href="work.html?project=dzejas-krajums"]');
 renderVideoShowcase();
+
+document.querySelector("[data-portfolio-return-home]")?.addEventListener("click", markPortfolioReturnRequested);
+
+document.querySelectorAll('a[href^="work.html?project="]').forEach((link) => {
+  link.addEventListener("click", () => {
+    if (link.getAttribute("href")?.startsWith("work.html?project=")) {
+      rememberPortfolioReturnPosition();
+    }
+  });
+});
 
 const updateLightboxNav = () => {
   const hasMultipleImages = activeLightboxImages.length > 1;
@@ -360,7 +408,7 @@ const showLightboxImage = (index) => {
 
 if (detailTitle && detailGrid) {
   const params = new URLSearchParams(window.location.search);
-  const project = projectImages[params.get("project")] || projectImages.sports;
+  const project = projectImages[params.get("project")] || projectImages.events;
   activeLightboxImages = project.images.filter((image) => !image.videoUrl);
 
   document.title = `${project.title} | Olivera Švāna portfolio`;
@@ -415,8 +463,6 @@ document.querySelectorAll("[data-image-src]").forEach((button) => {
   });
 });
 
-lightboxClose?.addEventListener("click", () => lightbox.close());
-
 lightboxPrev?.addEventListener("click", () => {
   showLightboxImage(activeLightboxIndex - 1);
 });
@@ -446,3 +492,5 @@ document.addEventListener("keydown", (event) => {
     showLightboxImage(activeLightboxIndex + 1);
   }
 });
+
+restorePortfolioReturnPosition();

@@ -326,12 +326,6 @@ h1 {
   }
 }
 
-.work-image.sports {
-  background-image:
-    linear-gradient(135deg, rgba(61, 36, 16, 0.38), rgba(176, 122, 69, 0.08)),
-    url("assets/portfolio-hero.png");
-}
-
 .work-image.events {
   background-image:
     linear-gradient(180deg, rgba(92, 58, 30, 0.1), rgba(61, 36, 16, 0.48)),
@@ -391,10 +385,6 @@ h1 {
 
 .indesign {
   background: #ead1b2;
-}
-
-.video-editing {
-  background: var(--paper);
 }
 
 .about {
@@ -495,6 +485,18 @@ h1 {
   color: var(--espresso);
 }
 
+.portfolio-back-link {
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.portfolio-back-link:hover {
+  color: var(--ochre);
+}
+
 .app-icon-title {
   width: clamp(72px, 10vw, 112px);
   height: clamp(72px, 10vw, 112px);
@@ -510,7 +512,7 @@ h1 {
   grid-auto-flow: dense;
   grid-auto-rows: 8px;
   align-items: start;
-  gap: 14px;
+  gap: 7px;
 }
 
 .detail-item {
@@ -606,7 +608,7 @@ h1 {
   position: relative;
   width: min(1080px, calc(100vw - 28px));
   max-height: calc(100vh - 28px);
-  padding: 50px 18px 18px;
+  padding: 18px;
   border: 1px solid rgba(216, 178, 138, 0.28);
   border-radius: 6px;
   background: var(--espresso);
@@ -632,7 +634,10 @@ h1 {
   font-weight: 700;
 }
 
-.lightbox-close,
+.lightbox p:empty {
+  display: none;
+}
+
 .lightbox-nav {
   display: inline-grid;
   place-items: center;
@@ -643,18 +648,6 @@ h1 {
   cursor: pointer;
   font: inherit;
   font-weight: 800;
-}
-
-.lightbox-close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  z-index: 2;
-  width: 38px;
-  height: 38px;
-  padding: 0;
-  font-size: 1.45rem;
-  line-height: 1;
 }
 
 .lightbox-nav {
@@ -668,8 +661,7 @@ h1 {
   line-height: 1;
 }
 
-.lightbox-nav:hover,
-.lightbox-close:hover {
+.lightbox-nav:hover {
   color: var(--paper);
   border-color: rgba(243, 230, 213, 0.72);
 }
@@ -756,7 +748,7 @@ h1 {
 
   .detail-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 10px;
+    gap: 6px;
   }
 
   .work-image {
@@ -774,11 +766,11 @@ h1 {
   .lightbox-frame {
     width: calc(100vw - 20px);
     max-height: calc(100vh - 20px);
-    padding: 44px 10px 12px;
+    padding: 10px;
   }
 
   .lightbox img {
-    max-height: calc(100vh - 118px);
+    max-height: calc(100vh - 84px);
   }
 
   .lightbox-nav {
